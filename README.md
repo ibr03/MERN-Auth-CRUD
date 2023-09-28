@@ -44,13 +44,13 @@ Before you begin, ensure you have met the following requirements:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/ibr03/patient-record-system.git
+   git clone https://github.com/ibr03/MERN-Auth-CRUD.git
    ```
 
 2. Navigate to project server directory:
 
    ```
-   cd patient-record-system/server
+   cd MERN-Auth-CRUD/server
    ```   
 
 3. Install dependencies:
@@ -62,7 +62,7 @@ Before you begin, ensure you have met the following requirements:
 4. Navigate to project client directory:
 
    ```
-   cd patient-record-system/client
+   cd MERN-Auth-CRUD/client
    ```   
 
 5. Install dependencies:
