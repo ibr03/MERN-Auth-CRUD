@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 const CreateRecord = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
-    name: "",
+    patientName: "",
     age: "",
     medicalHistory: "",
     lastVisit: ""
@@ -36,7 +36,6 @@ const CreateRecord = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submit button clicked");
 
     try {
       const { data } = await axios.post(
@@ -63,7 +62,7 @@ const CreateRecord = () => {
 
     setInputValue({
       ...inputValue,
-      name: "",
+      patientName: "",
       age: "",
       medicalHistory: "",
       lastVisit: ""
@@ -75,19 +74,19 @@ const CreateRecord = () => {
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="Name">
           <Form.Label>Name</Form.Label>
-          <Form.Control type="text" value={inputValue.name} onChange={handleOnChange} />
+          <Form.Control name="patientName" type="text" value={inputValue.name} onChange={handleOnChange} />
         </Form.Group>
         <Form.Group controlId="Age">
           <Form.Label>Age</Form.Label>
-          <Form.Control type="text" value={inputValue.age} onChange={handleOnChange} />
+          <Form.Control name="age" type="number" value={inputValue.age} onChange={handleOnChange} />
         </Form.Group>
         <Form.Group controlId="Medical History">
           <Form.Label>Medical History</Form.Label>
-          <Form.Control type="text" value={inputValue.medicalHistory} onChange={handleOnChange} />
+          <Form.Control name="medicalHistory" type="text" value={inputValue.medicalHistory} onChange={handleOnChange} />
         </Form.Group>
         <Form.Group controlId="Last Visit">
           <Form.Label>Last Visit Date</Form.Label>
-          <Form.Control type="date" value={inputValue.lastVisit} onChange={handleOnChange} />
+          <Form.Control name="lastVisit" type="date" value={inputValue.lastVisit} onChange={handleOnChange} />
         </Form.Group>
         <Button variant="danger" size="lg" block="block" type="submit" className="mt-4">
           Create Record

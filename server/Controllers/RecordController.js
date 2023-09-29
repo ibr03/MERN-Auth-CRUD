@@ -6,7 +6,7 @@ const createRecord = async (req, res, next) => {
         // Create and save the user to the database
         const record = new Record({ patientName, age, medicalHistory, lastVisit });
         await record.save();
-        res.status(201).json({ message: 'Record created successfully' });
+        res.status(201).json({ message: 'Record created successfully', success: true });
         next();
     } catch (error) {
         console.log(error);
@@ -17,7 +17,7 @@ const createRecord = async (req, res, next) => {
 const udpateRecord = async (req, res, next) => {
     try {
         await Record.findByIdAndUpdate(req.params.id, req.body);
-        res.status(204).json({message: 'User updated successfully' });
+        res.status(204).json({message: 'User updated successfully', success: true });
         next();
     } catch (error) {
         console.log(error);
@@ -28,7 +28,7 @@ const udpateRecord = async (req, res, next) => {
 const deleteRecord = async (req, res, next) => {
     try {
         await Record.findByIdAndRemove(req.params.id);
-        res.status(204).json({message: 'User deleted successfully' });
+        res.status(204).json({message: 'User deleted successfully', success: true });
         next();
     } catch (error) {
         console.log(error);

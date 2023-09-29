@@ -20,19 +20,22 @@ const Home = () => {
       if (!cookies.token) {
         navigate('/login');
       }
+      try {
+        const { data } = await axios.post(
+          "http://localhost:4000/patients",
+          {},
+          { withCredentials: true }
+        );
 
-      const { data } = await axios.post(
-        "http://localhost:4000",
-        {},
-        { withCredentials: true }
-      );
+        const { status, user } = data;
+        setUsername(user);
 
-      const { status, user } = data;
-      setUsername(user);
-
-      return status ? toast(`Hello ${user}`, {
-        position: "top-right",
-      }): (removeCookie("token"), navigate('/login'));
+        return status ? toast(`Hello ${user}`, {
+          position: "top-right",
+        }): (removeCookie("token"), navigate('/login'));
+      } catch (error) {
+        console.error("Axios Error:", error);
+      }
     };
 
     verifyCookie();
@@ -54,7 +57,7 @@ const Home = () => {
             <Navbar bg="dark" variant="dark">
               <Container>
                 <Navbar.Brand>
-                  <Link to={'/'} className="nav-link">
+                  <Link className="nav-link">
                     Patient Health Record System
                   </Link>
                 </Navbar.Brand>

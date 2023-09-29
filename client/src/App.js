@@ -18,7 +18,6 @@ function App() {
             <div className="wrapper">
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route exact path="/" element={<CreateRecord />} />
                 <Route exact path="/create-record" element={<CreateRecord />} />
                 <Route exact path="/update-record/:id" element={<UpdateRecord />} />
                 <Route exact path="/record-list" element={<RecordList />} />
