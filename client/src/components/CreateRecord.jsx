@@ -51,8 +51,8 @@ const CreateRecord = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/");
-        }, 1000);
+          navigate("/record-list");
+        }, 500);
       } else {
         handleError(message);
       }

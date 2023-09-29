@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
 const UpdateRecord = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const [cookies] = useCookies([]);
   const [inputValue, setInputValue] = useState({
@@ -23,7 +24,7 @@ const UpdateRecord = () => {
         navigate('/login');
       }
       try {
-        const { data } = await axios.get(`http://localhost:4000/patients/update-record/${this.obj._id}`);
+        const { data } = await axios.get(`http://localhost:4000/patients/update-record/${id}`, { withCredentials: true });
         setInputValue(data);
       } catch (error) {
         console.log(error);
@@ -31,7 +32,7 @@ const UpdateRecord = () => {
     }
   
     getPatient();
-  }, [cookies, navigate]);
+  }, [cookies, navigate, id]);
   
   const handleOnChange = (e) => {
     const { name, value } = e.target; 
@@ -46,11 +47,14 @@ const UpdateRecord = () => {
 
     try {
       await axios.put(
-        `http://localhost:4000/patients/update-record/${this.obj._id}`,
+        `http://localhost:4000/patients/update-record/${id}`,
         {
           ...inputValue,
-        }
+        }, 
+        { withCredentials: true }
       );
+      // Redirect to the record list page after a successful update
+      navigate("/record-list");
     } catch (error) {
       console.log(error);
     }
@@ -81,7 +85,7 @@ const UpdateRecord = () => {
         </Form.Group>
         <Form.Group controlId="Last Visit">
           <Form.Label>Last Visit Date</Form.Label>
-          <Form.Control name="date" type="date" value={lastVisit} onChange={handleOnChange} />
+          <Form.Control name="lastVisit" type="date" value={lastVisit} onChange={handleOnChange} />
         </Form.Group>
         <Button variant="danger" size="lg" block="block" type="submit" className="mt-4">
           Update Record

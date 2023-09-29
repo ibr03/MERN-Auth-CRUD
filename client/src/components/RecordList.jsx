@@ -27,7 +27,7 @@ const RecordList = () => {
   // Function to delete a patient record
   const deleteRecord = async (recordId) => {
     try {
-      await axios.delete(`http://localhost:4000/patients/delete-record/${recordId}`);
+      await axios.delete(`http://localhost:4000/patients/delete-record/${recordId}`, { withCredentials: true });
       console.log('Patient record deleted successfully!');
       // After deletion, fetch the updated list of patients
       getAllPatients();
