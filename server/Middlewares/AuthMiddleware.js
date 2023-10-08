@@ -5,7 +5,7 @@ module.exports.userVerification = async (req, res, next) => {
   const token = req.cookies.token;
 
   if (!token) {
-    return res.json({ status: false, message: 'Unauthorized' })
+    return res.status(401).json({ status: false, message: 'Unauthorized' })
   }
   
   try {

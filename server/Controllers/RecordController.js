@@ -14,7 +14,7 @@ const createRecord = async (req, res, next) => {
     }
 };
 
-const udpateRecord = async (req, res, next) => {
+const updateRecord = async (req, res, next) => {
     try {
         await Record.findByIdAndUpdate(req.params.id, req.body);
         res.status(204).json({message: 'User updated successfully', success: true });
@@ -53,6 +53,6 @@ const getAllRecords = async (req, res, next) => {
 module.exports = {
     getAllRecords,
     deleteRecord,
-    udpateRecord,
+    updateRecord,
     createRecord
 }

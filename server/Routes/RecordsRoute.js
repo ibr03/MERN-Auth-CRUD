@@ -7,7 +7,7 @@ router.get('/', userVerification, recordController.getAllRecords);
 // create record
 router.post('/create-record', userVerification, recordController.createRecord);
 // update record
-router.put('/update-record/:id', userVerification, recordController.udpateRecord);
+router.put('/update-record/:id', userVerification, recordController.updateRecord);
 // delete record
 router.delete('/delete-record/:id', userVerification, recordController.deleteRecord);
 

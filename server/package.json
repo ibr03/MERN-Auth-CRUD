@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodemon --exec \"mocha -R min\""
   },
   "keywords": [],
   "author": "",
@@ -21,6 +21,9 @@
     "mongoose": "^7.5.3"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0",
+    "nodemon": "^3.0.1",
+    "sinon": "^16.1.0"
   }
 }
